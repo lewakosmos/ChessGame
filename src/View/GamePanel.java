@@ -1,7 +1,8 @@
 package View;
 
 
-import Controller.DeckCreator;
+import Controller.PlayerAction;
+import Model.DeckCreator;
 
 import javax.swing.*;
 import java.awt.*;
@@ -31,6 +32,7 @@ public class GamePanel {
         }
         whiteTilesIconsCreator(tilesList);
         blackTilesIconsCreator(tilesList);
+        playerAction(); //todo
         return deckTilesPanel;
     }
 
@@ -71,6 +73,10 @@ public class GamePanel {
     private void blackTilesIconsCreator(ArrayList<JButton> tilesList){
         BlackPiecesIconsCreator bpic = new BlackPiecesIconsCreator();
         bpic.tilesIconsCreator(tilesList);
+    }
+    private void playerAction(){
+        PlayerAction pa = new PlayerAction();
+        pa.playerTurn();
     }
     public ArrayList<JButton> getTilesList(){
         return tilesList;
