@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class WhitePiecesIconsCreator implements IconCreator{
+    private String pawnIconPath = "C:\\Users\\lewak\\IdeaProjects\\ChessGame\\pieces\\whitePawn.png";
     @Override
     public void tilesIconsCreator(ArrayList<JButton> tilesList) {
         pawnIconCreator(tilesList);
@@ -20,7 +21,7 @@ public class WhitePiecesIconsCreator implements IconCreator{
         for(JButton button : tilesList){
             if(Arrays.asList("A2", "B2", "C2", "D2", "E2", "F2", "G2", "H2").contains(button.getText())){
                 button.setText(button.getText() + "whitePawn");
-                button.setIcon(iconCreator("C:\\Users\\lewak\\IdeaProjects\\ChessGame\\pieces\\whitePawn.png"));
+                button.setIcon(iconCreator(pawnIconPath));
             }
         }
     }
@@ -77,5 +78,8 @@ public class WhitePiecesIconsCreator implements IconCreator{
         figure = figure.getScaledInstance(40, 40, Image.SCALE_SMOOTH);
         tileImage = new ImageIcon(figure);
         return tileImage;
+    }
+    public String getPawnIconPath(){
+        return pawnIconPath;
     }
 }

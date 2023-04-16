@@ -1,13 +1,16 @@
 package Model;
 
 import View.GamePanel;
+import View.WhitePiecesIconsCreator;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 
 public class WhitePawn implements Piece {
+    private String pieceStringTail;
     @Override
     public void moveAndAttack(JButton button) {
         if(button.getText().charAt(1) == '2'){
@@ -20,16 +23,28 @@ public class WhitePawn implements Piece {
     }
     public void firstTurnPossibleTilesToGo(JButton button){
         GamePanel gp = new GamePanel();
+        button.setText(button.getText().substring(0, 2));
         for(JButton tileButton : gp.getTilesList()){
             if(tileButton.getText().equals(buttonNextPlace(button)) ||
                     tileButton.getText().equals(buttonNextNextPlace(button))){
                 tileButton.setBackground(Color.PINK);
+                gp.getPossibleTilesToGoList().add(tileButton);
             }
             else{
                 tileButton.setEnabled(false);
             }
         }
     }
+    public void secondPartOfTheTurn(JButton button){
+        GamePanel gp = new GamePanel();
+        WhitePiecesIconsCreator wpic = new WhitePiecesIconsCreator();
+        button.setIcon(wpic.iconCreator(wpic.getPawnIconPath()));
+        button.setText(button.getText() + "whitePawn");
+        gp.getPossibleTilesToGoList().forEach(JButton -> JButton.setBackground(Color.WHITE));
+        gp.getPossibleTilesToGoList().clear();
+
+    }
+
     private String buttonNextPlace(JButton button){
         DeckCreator dc = new DeckCreator();
         String columnLetter = button.getText().substring(0, 1);

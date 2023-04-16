@@ -9,14 +9,22 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class PlayerAction {
-    public void playerTurn(){
+    public void playerFirstPartTurn(){
         GamePanel gp = new GamePanel();
         for(JButton button : gp.getTilesList()){
             button.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     figureRecognition(button);
-
+                    for(JButton secondPlaceButton : gp.getPossibleTilesToGoList()){
+                        secondPlaceButton.addActionListener(new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                figureRecognitionSecondPart(secondPlaceButton);
+                                button.setIcon(null);
+                            }
+                        });
+                    }
                 }
             });
         }
@@ -24,14 +32,17 @@ public class PlayerAction {
     private void figureRecognition(JButton button){
         if(isItPawn(button)){
             WhitePawn wp = new WhitePawn();
-            wp.firstTurnPossibleTilesToGo(button);
+            wp.moveAndAttack(button);
         }
+    }
+    private void figureRecognitionSecondPart(JButton button){
+        WhitePawn wp = new WhitePawn();
+        wp.secondPartOfTheTurn(button);
     }
     private boolean isItPawn(JButton button){
         boolean itsPawn = false;
         if(button.getText().substring(2).equals("whitePawn")){
             itsPawn = true;
-            button.setBackground(Color.RED);
         }
         return itsPawn;
     }

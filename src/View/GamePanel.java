@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 public class GamePanel {
     private static ArrayList<JButton> tilesList;
+    private static ArrayList<JButton> possibleTilesToGoList;
     public JPanel panelCreator(){
         DeckCreator dc = new DeckCreator();
         dc.deckListCreator();
@@ -21,6 +22,7 @@ public class GamePanel {
     }
     private JPanel deckTilesCreator(ArrayList<String> deckList){
         tilesList = new ArrayList<>();
+        possibleTilesToGoList = new ArrayList<>();
         JPanel deckTilesPanel = new JPanel(new GridLayout(8, 8));
         for(String tile : deckList){
             JButton tileButton = new JButton(tile);
@@ -33,6 +35,7 @@ public class GamePanel {
         whiteTilesIconsCreator(tilesList);
         blackTilesIconsCreator(tilesList);
         playerAction(); //todo
+
         return deckTilesPanel;
     }
 
@@ -76,9 +79,12 @@ public class GamePanel {
     }
     private void playerAction(){
         PlayerAction pa = new PlayerAction();
-        pa.playerTurn();
+        pa.playerFirstPartTurn();
     }
     public ArrayList<JButton> getTilesList(){
         return tilesList;
+    }
+    public ArrayList<JButton> getPossibleTilesToGoList(){
+        return possibleTilesToGoList;
     }
 }
