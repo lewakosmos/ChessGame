@@ -1,10 +1,9 @@
 package Controller;
 
-import Model.WhitePawn;
+import Model.WhitePiece.*;
 import View.GamePanel;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -22,6 +21,8 @@ public class PlayerAction {
                             public void actionPerformed(ActionEvent e) {
                                 figureRecognitionSecondPart(secondPlaceButton);
                                 button.setIcon(null);
+                                gp.getPossibleTilesToGoList().clear();
+                                playerFirstPartTurn();
                             }
                         });
                     }
@@ -30,20 +31,36 @@ public class PlayerAction {
         }
     }
     private void figureRecognition(JButton button){
-        if(isItPawn(button)){
-            WhitePawn wp = new WhitePawn();
-            wp.moveAndAttack(button);
+        String piece = "";
+        switch (button.getText().substring(2)){
+            case "whitePawn":
+                WhitePawn wPawn = new WhitePawn();
+                wPawn.moveAndAttack(button);
+                break;
+            case "whiteRook":
+                WhiteRook wRook = new WhiteRook();
+                wRook.moveAndAttack(button);
+                break;
+            case "whiteKnight":
+                WhiteKnight wKnight = new WhiteKnight();
+                wKnight.moveAndAttack(button);
+                break;
+            case "whiteBishop":
+                WhiteBishop wBishop = new WhiteBishop();
+                wBishop.moveAndAttack(button);
+                break;
+            case "whiteQueen":
+                WhiteQueen wQueen = new WhiteQueen();
+                wQueen.moveAndAttack(button);
+                break;
+            default:
+                WhiteKing wKing = new WhiteKing();
+                wKing.moveAndAttack(button);
+                break;
         }
     }
     private void figureRecognitionSecondPart(JButton button){
         WhitePawn wp = new WhitePawn();
         wp.secondPartOfTheTurn(button);
-    }
-    private boolean isItPawn(JButton button){
-        boolean itsPawn = false;
-        if(button.getText().substring(2).equals("whitePawn")){
-            itsPawn = true;
-        }
-        return itsPawn;
     }
 }

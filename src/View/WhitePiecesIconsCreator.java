@@ -6,7 +6,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class WhitePiecesIconsCreator implements IconCreator{
-    private String pawnIconPath = "C:\\Users\\lewak\\IdeaProjects\\ChessGame\\pieces\\whitePawn.png";
+    private final String pawnIconPath = "C:\\Users\\lewak\\IdeaProjects\\ChessGame\\pieces\\whitePawn.png";
+    private final String rookIconPath = "C:\\Users\\lewak\\IdeaProjects\\ChessGame\\pieces\\whiteRook.png";
+    private final String knightIconPath = "C:\\Users\\lewak\\IdeaProjects\\ChessGame\\pieces\\whiteKnight.png";
+    private final String bishopIconPath = "C:\\Users\\lewak\\IdeaProjects\\ChessGame\\pieces\\whiteBishop.png";
+    private final String queenIconPath = "C:\\Users\\lewak\\IdeaProjects\\ChessGame\\pieces\\whiteQueen.png";
+    private final String kingIconPath = "C:\\Users\\lewak\\IdeaProjects\\ChessGame\\pieces\\whiteKing.png";
     @Override
     public void tilesIconsCreator(ArrayList<JButton> tilesList) {
         pawnIconCreator(tilesList);
@@ -30,7 +35,7 @@ public class WhitePiecesIconsCreator implements IconCreator{
         for(JButton button : tilesList){
             if(Arrays.asList("A1", "H1").contains(button.getText())){
                 button.setText(button.getText() + "whiteRook");
-                button.setIcon(iconCreator("C:\\Users\\lewak\\IdeaProjects\\ChessGame\\pieces\\whiteRook.png"));
+                button.setIcon(iconCreator(rookIconPath));
             }
         }
     }
@@ -39,7 +44,7 @@ public class WhitePiecesIconsCreator implements IconCreator{
         for(JButton button : tilesList){
             if(Arrays.asList("B1", "G1").contains(button.getText())){
                 button.setText(button.getText() + "whiteKnight");
-                button.setIcon(iconCreator("C:\\Users\\lewak\\IdeaProjects\\ChessGame\\pieces\\whiteKnight.png"));
+                button.setIcon(iconCreator(knightIconPath));
             }
         }
     }
@@ -48,7 +53,7 @@ public class WhitePiecesIconsCreator implements IconCreator{
         for(JButton button : tilesList){
             if(Arrays.asList("C1", "F1").contains(button.getText())){
                 button.setText(button.getText() + "whiteBishop");
-                button.setIcon(iconCreator("C:\\Users\\lewak\\IdeaProjects\\ChessGame\\pieces\\whiteBishop.png"));
+                button.setIcon(iconCreator(bishopIconPath));
             }
         }
     }
@@ -58,7 +63,7 @@ public class WhitePiecesIconsCreator implements IconCreator{
         for(JButton button : tilesList){
             if("D1".contains(button.getText())){
                 button.setText(button.getText() + "whiteQueen");
-                button.setIcon(iconCreator("C:\\Users\\lewak\\IdeaProjects\\ChessGame\\pieces\\whiteQueen.png"));
+                button.setIcon(iconCreator(queenIconPath));
             }
         }
     }
@@ -67,7 +72,7 @@ public class WhitePiecesIconsCreator implements IconCreator{
         for(JButton button : tilesList){
             if("E1".contains(button.getText())){
                 button.setText(button.getText() + "whiteKing");
-                button.setIcon(iconCreator("C:\\Users\\lewak\\IdeaProjects\\ChessGame\\pieces\\whiteKing.png"));
+                button.setIcon(iconCreator(kingIconPath));
             }
         }
     }
@@ -81,5 +86,20 @@ public class WhitePiecesIconsCreator implements IconCreator{
     }
     public String getPawnIconPath(){
         return pawnIconPath;
+    }
+    public String getRookIconPath(){
+        return rookIconPath;
+    }
+    public String getKnightIconPath(){
+        return knightIconPath;
+    }
+    public String getBishopIconPath(){
+        return bishopIconPath;
+    }
+    public String getQueenIconPath(){
+        return queenIconPath;
+    }
+    public String getKingIconPath(){
+        return kingIconPath;
     }
 }

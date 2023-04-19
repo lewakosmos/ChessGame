@@ -6,6 +6,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class BlackPiecesIconsCreator implements IconCreator{
+    private final String pawnIconPath = "C:\\Users\\lewak\\IdeaProjects\\ChessGame\\pieces\\blackPawn.png";
+    private final String rookIconPath = "C:\\Users\\lewak\\IdeaProjects\\ChessGame\\pieces\\blackRook.png";
+    private final String knightIconPath = "C:\\Users\\lewak\\IdeaProjects\\ChessGame\\pieces\\blackKnight.png";
+    private final String bishopIconPath = "C:\\Users\\lewak\\IdeaProjects\\ChessGame\\pieces\\blackBishop.png";
+    private final String queenIconPath = "C:\\Users\\lewak\\IdeaProjects\\ChessGame\\pieces\\blackQueen.png";
+    private final String kingIconPath = "C:\\Users\\lewak\\IdeaProjects\\ChessGame\\pieces\\blackKing.png";
     @Override
     public void tilesIconsCreator(ArrayList<JButton> tilesList) {
         pawnIconCreator(tilesList);
@@ -20,7 +26,7 @@ public class BlackPiecesIconsCreator implements IconCreator{
         for(JButton button : tilesList){
             if(Arrays.asList("A7", "B7", "C7", "D7", "E7", "F7", "G7", "H7").contains(button.getText())){
                 button.setText(button.getText() + "blackPawn");
-                button.setIcon(iconCreator("C:\\Users\\lewak\\IdeaProjects\\ChessGame\\pieces\\blackPawn.png"));
+                button.setIcon(iconCreator(pawnIconPath));
             }
         }
     }
@@ -29,7 +35,7 @@ public class BlackPiecesIconsCreator implements IconCreator{
         for(JButton button : tilesList){
             if(Arrays.asList("A8", "H8").contains(button.getText())){
                 button.setText(button.getText() + "blackRook");
-                button.setIcon(iconCreator("C:\\Users\\lewak\\IdeaProjects\\ChessGame\\pieces\\blackRook.png"));
+                button.setIcon(iconCreator(rookIconPath));
             }
         }
     }
@@ -38,7 +44,7 @@ public class BlackPiecesIconsCreator implements IconCreator{
         for(JButton button : tilesList){
             if(Arrays.asList("B8", "G8").contains(button.getText())){
                 button.setText(button.getText() + "blackKnight");
-                button.setIcon(iconCreator("C:\\Users\\lewak\\IdeaProjects\\ChessGame\\pieces\\blackKnight.png"));
+                button.setIcon(iconCreator(knightIconPath));
             }
         }
     }
@@ -47,7 +53,7 @@ public class BlackPiecesIconsCreator implements IconCreator{
         for(JButton button : tilesList){
             if(Arrays.asList("C8", "F8").contains(button.getText())){
                 button.setText(button.getText() + "blackBishop");
-                button.setIcon(iconCreator("C:\\Users\\lewak\\IdeaProjects\\ChessGame\\pieces\\blackBishop.png"));
+                button.setIcon(iconCreator(bishopIconPath));
             }
         }
     }
@@ -56,7 +62,7 @@ public class BlackPiecesIconsCreator implements IconCreator{
         for(JButton button : tilesList){
             if("D8".contains(button.getText())){
                 button.setText(button.getText() + "blackQueen");
-                button.setIcon(iconCreator("C:\\Users\\lewak\\IdeaProjects\\ChessGame\\pieces\\blackQueen.png"));
+                button.setIcon(iconCreator(queenIconPath));
             }
         }
     }
@@ -65,7 +71,7 @@ public class BlackPiecesIconsCreator implements IconCreator{
         for(JButton button : tilesList){
             if("E8".contains(button.getText())){
                 button.setText(button.getText() + "blackKing");
-                button.setIcon(iconCreator("C:\\Users\\lewak\\IdeaProjects\\ChessGame\\pieces\\blackKing.png"));
+                button.setIcon(iconCreator(kingIconPath));
             }
         }
     }
@@ -76,5 +82,23 @@ public class BlackPiecesIconsCreator implements IconCreator{
         figure = figure.getScaledInstance(40, 40, Image.SCALE_SMOOTH);
         tileImage = new ImageIcon(figure);
         return tileImage;
+    }
+    public String getPawnIconPath(){
+        return pawnIconPath;
+    }
+    public String getRookIconPath(){
+        return rookIconPath;
+    }
+    public String getKnightIconPath(){
+        return knightIconPath;
+    }
+    public String getBishopIconPath(){
+        return bishopIconPath;
+    }
+    public String getQueenIconPath(){
+        return queenIconPath;
+    }
+    public String getKingIconPath(){
+        return kingIconPath;
     }
 }

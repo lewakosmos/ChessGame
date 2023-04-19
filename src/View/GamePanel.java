@@ -35,7 +35,6 @@ public class GamePanel {
         whiteTilesIconsCreator(tilesList);
         blackTilesIconsCreator(tilesList);
         playerAction(); //todo
-
         return deckTilesPanel;
     }
 

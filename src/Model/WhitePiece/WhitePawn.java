@@ -1,27 +1,26 @@
-package Model;
+package Model.WhitePiece;
 
+import Model.DeckCreator;
+import Model.Piece;
 import View.GamePanel;
 import View.WhitePiecesIconsCreator;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.Arrays;
 
-
 public class WhitePawn implements Piece {
-    private String pieceStringTail;
     @Override
     public void moveAndAttack(JButton button) {
         if(button.getText().charAt(1) == '2'){
-            firstTurnPossibleTilesToGo(button);
+            firstTurnPossibleTilesToRun(button);
         }
         else{
             possibleTilesToRun(button);
         }
         possibleTilesToAttack(button);
     }
-    public void firstTurnPossibleTilesToGo(JButton button){
+    public void firstTurnPossibleTilesToRun(JButton button){
         GamePanel gp = new GamePanel();
         button.setText(button.getText().substring(0, 2));
         for(JButton tileButton : gp.getTilesList()){
@@ -35,16 +34,19 @@ public class WhitePawn implements Piece {
             }
         }
     }
-    public void secondPartOfTheTurn(JButton button){
+    @Override
+    public void possibleTilesToRun(JButton button) {
         GamePanel gp = new GamePanel();
-        WhitePiecesIconsCreator wpic = new WhitePiecesIconsCreator();
-        button.setIcon(wpic.iconCreator(wpic.getPawnIconPath()));
-        button.setText(button.getText() + "whitePawn");
-        gp.getPossibleTilesToGoList().forEach(JButton -> JButton.setBackground(Color.WHITE));
-        gp.getPossibleTilesToGoList().clear();
-
+        for(JButton tileButton : gp.getTilesList()){
+            if(tileButton.getText().equals(buttonNextPlace(button))){
+                tileButton.setBackground(Color.PINK);
+                gp.getPossibleTilesToGoList().add(tileButton);
+            }
+            else{
+                tileButton.setEnabled(false);
+            }
+        }
     }
-
     private String buttonNextPlace(JButton button){
         DeckCreator dc = new DeckCreator();
         String columnLetter = button.getText().substring(0, 1);
@@ -58,18 +60,6 @@ public class WhitePawn implements Piece {
         String numberString = button.getText().substring(1, 2);
         int stringIndex = Arrays.asList(dc.getStringDeckArray()).indexOf(numberString);
         return columnLetter + dc.getStringDeckArray()[stringIndex + 2];
-    }
-    @Override
-    public void possibleTilesToRun(JButton button) {
-        GamePanel gp = new GamePanel();
-        for(JButton tileButton : gp.getTilesList()){
-            if(tileButton.getText().equals(buttonNextPlace(button))){
-                tileButton.setBackground(Color.PINK);
-            }
-            else{
-                tileButton.setEnabled(false);
-            }
-        }
     }
     @Override
     public void possibleTilesToAttack(JButton button) {
@@ -106,5 +96,14 @@ public class WhitePawn implements Piece {
         int columnIndex = Arrays.asList(dc.getColumnDeckArray()).indexOf(columnLetter);
         int stringIndex = Arrays.asList(dc.getStringDeckArray()).indexOf(numberString);
         return dc.getColumnDeckArray()[columnIndex + 1] + dc.getStringDeckArray()[stringIndex + 1];
+    }
+    public void secondPartOfTheTurn(JButton button){
+        GamePanel gp = new GamePanel();
+        WhitePiecesIconsCreator wpic = new WhitePiecesIconsCreator();
+        button.setIcon(wpic.iconCreator(wpic.getPawnIconPath()));
+        button.setText(button.getText() + "whitePawn");
+        gp.getTilesList().forEach(JButton -> JButton.setBackground(Color.WHITE));
+        gp.getTilesList().forEach(JButton -> JButton.setEnabled(true));
+
     }
 }
