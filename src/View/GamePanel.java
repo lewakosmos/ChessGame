@@ -1,7 +1,7 @@
 package View;
 
 
-import Controller.PlayerAction;
+import Controller.ActionHierarchy;
 import Model.DeckCreator;
 
 import javax.swing.*;
@@ -10,7 +10,9 @@ import java.util.ArrayList;
 
 public class GamePanel {
     private static ArrayList<JButton> tilesList;
-    private static ArrayList<JButton> possibleTilesToGoList;
+    private ArrayList<JButton> possibleWhitePiecesListToGo;
+    private ArrayList<JButton> possibleBlackPiecesListToGo;
+
     public JPanel panelCreator(){
         DeckCreator dc = new DeckCreator();
         dc.deckListCreator();
@@ -22,7 +24,8 @@ public class GamePanel {
     }
     private JPanel deckTilesCreator(ArrayList<String> deckList){
         tilesList = new ArrayList<>();
-        possibleTilesToGoList = new ArrayList<>();
+        possibleWhitePiecesListToGo = new ArrayList<>();
+        possibleBlackPiecesListToGo = new ArrayList<>();
         JPanel deckTilesPanel = new JPanel(new GridLayout(8, 8));
         for(String tile : deckList){
             JButton tileButton = new JButton(tile);
@@ -34,7 +37,7 @@ public class GamePanel {
         }
         whiteTilesIconsCreator(tilesList);
         blackTilesIconsCreator(tilesList);
-        playerAction(); //todo
+        actionHierarchy();
         return deckTilesPanel;
     }
 
@@ -76,14 +79,18 @@ public class GamePanel {
         BlackPiecesIconsCreator bpic = new BlackPiecesIconsCreator();
         bpic.tilesIconsCreator(tilesList);
     }
-    private void playerAction(){
-        PlayerAction pa = new PlayerAction();
-        pa.playerFirstPartTurn();
+    private void actionHierarchy(){
+        ActionHierarchy ah = new ActionHierarchy();
+        ah.gameAction();
     }
     public ArrayList<JButton> getTilesList(){
         return tilesList;
     }
-    public ArrayList<JButton> getPossibleTilesToGoList(){
-        return possibleTilesToGoList;
+    public ArrayList<JButton> getPossibleWhitePiecesListToGo(){
+        return possibleWhitePiecesListToGo;
     }
+    public ArrayList<JButton> getPossibleBlackPiecesListToGo(){
+        return possibleBlackPiecesListToGo;
+    }
+
 }

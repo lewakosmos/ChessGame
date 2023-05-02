@@ -27,6 +27,7 @@ public class WhitePiecesIconsCreator implements IconCreator{
             if(Arrays.asList("A2", "B2", "C2", "D2", "E2", "F2", "G2", "H2").contains(button.getText())){
                 button.setText(button.getText() + "whitePawn");
                 button.setIcon(iconCreator(pawnIconPath));
+                button.setDisabledIcon(iconCreator(pawnIconPath));
             }
         }
     }
@@ -36,6 +37,7 @@ public class WhitePiecesIconsCreator implements IconCreator{
             if(Arrays.asList("A1", "H1").contains(button.getText())){
                 button.setText(button.getText() + "whiteRook");
                 button.setIcon(iconCreator(rookIconPath));
+                button.setDisabledIcon(iconCreator(rookIconPath));
             }
         }
     }
@@ -45,6 +47,7 @@ public class WhitePiecesIconsCreator implements IconCreator{
             if(Arrays.asList("B1", "G1").contains(button.getText())){
                 button.setText(button.getText() + "whiteKnight");
                 button.setIcon(iconCreator(knightIconPath));
+                button.setDisabledIcon(iconCreator(knightIconPath));
             }
         }
     }
@@ -54,6 +57,7 @@ public class WhitePiecesIconsCreator implements IconCreator{
             if(Arrays.asList("C1", "F1").contains(button.getText())){
                 button.setText(button.getText() + "whiteBishop");
                 button.setIcon(iconCreator(bishopIconPath));
+                button.setDisabledIcon(iconCreator(bishopIconPath));
             }
         }
     }
@@ -64,6 +68,7 @@ public class WhitePiecesIconsCreator implements IconCreator{
             if("D1".contains(button.getText())){
                 button.setText(button.getText() + "whiteQueen");
                 button.setIcon(iconCreator(queenIconPath));
+                button.setDisabledIcon(iconCreator(queenIconPath));
             }
         }
     }
@@ -73,6 +78,7 @@ public class WhitePiecesIconsCreator implements IconCreator{
             if("E1".contains(button.getText())){
                 button.setText(button.getText() + "whiteKing");
                 button.setIcon(iconCreator(kingIconPath));
+                button.setDisabledIcon(iconCreator(kingIconPath));
             }
         }
     }

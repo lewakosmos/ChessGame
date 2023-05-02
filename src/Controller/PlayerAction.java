@@ -6,32 +6,34 @@ import View.GamePanel;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
-public class PlayerAction {
-    public void playerFirstPartTurn(){
+public class PlayerAction implements Action {
+    private ArrayList<JButton> whitePiecesList;
+    public void whitePiecesListCreator() {
         GamePanel gp = new GamePanel();
-        for(JButton button : gp.getTilesList()){
+        whitePiecesList = new ArrayList<>();
+        for (JButton button : gp.getTilesList()) {
+            if (button.getText().startsWith("white", 2)) {
+                whitePiecesList.add(button);
+            }
+        }
+    }
+    @Override
+    public void firstPartTurn(){
+        whitePiecesListCreator();
+        for(JButton button : whitePiecesList){
             button.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     figureRecognition(button);
-                    for(JButton secondPlaceButton : gp.getPossibleTilesToGoList()){
-                        secondPlaceButton.addActionListener(new ActionListener() {
-                            @Override
-                            public void actionPerformed(ActionEvent e) {
-                                figureRecognitionSecondPart(secondPlaceButton);
-                                button.setIcon(null);
-                                gp.getPossibleTilesToGoList().clear();
-                                playerFirstPartTurn();
-                            }
-                        });
-                    }
+                    secondPartTurn(button);
                 }
             });
         }
     }
-    private void figureRecognition(JButton button){
-        String piece = "";
+
+    public void figureRecognition(JButton button){
         switch (button.getText().substring(2)){
             case "whitePawn":
                 WhitePawn wPawn = new WhitePawn();
@@ -59,7 +61,22 @@ public class PlayerAction {
                 break;
         }
     }
-    private void figureRecognitionSecondPart(JButton button){
+    @Override
+    public void secondPartTurn(JButton button){
+        OpponentAction oa = new OpponentAction();
+        GamePanel gp = new GamePanel();
+        for(JButton secondPlaceButton : gp.getPossibleWhitePiecesListToGo()){
+            secondPlaceButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    piecePlaceSecondPart(secondPlaceButton);
+                    button.setIcon(null);
+                    oa.firstPartTurn();
+                }
+            });
+        }
+    }
+    public void piecePlaceSecondPart(JButton button){
         WhitePawn wp = new WhitePawn();
         wp.secondPartOfTheTurn(button);
     }
