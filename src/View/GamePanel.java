@@ -10,8 +10,7 @@ import java.util.ArrayList;
 
 public class GamePanel {
     private static ArrayList<JButton> tilesList;
-    private ArrayList<JButton> possibleWhitePiecesListToGo;
-    private ArrayList<JButton> possibleBlackPiecesListToGo;
+    private static ArrayList<JButton> possiblePiecesListToGo;
 
     public JPanel panelCreator(){
         DeckCreator dc = new DeckCreator();
@@ -24,8 +23,7 @@ public class GamePanel {
     }
     private JPanel deckTilesCreator(ArrayList<String> deckList){
         tilesList = new ArrayList<>();
-        possibleWhitePiecesListToGo = new ArrayList<>();
-        possibleBlackPiecesListToGo = new ArrayList<>();
+        possiblePiecesListToGo = new ArrayList<>();
         JPanel deckTilesPanel = new JPanel(new GridLayout(8, 8));
         for(String tile : deckList){
             JButton tileButton = new JButton(tile);
@@ -86,11 +84,7 @@ public class GamePanel {
     public ArrayList<JButton> getTilesList(){
         return tilesList;
     }
-    public ArrayList<JButton> getPossibleWhitePiecesListToGo(){
-        return possibleWhitePiecesListToGo;
+    public ArrayList<JButton> getPossiblePiecesListToGo(){
+        return possiblePiecesListToGo;
     }
-    public ArrayList<JButton> getPossibleBlackPiecesListToGo(){
-        return possibleBlackPiecesListToGo;
-    }
-
 }

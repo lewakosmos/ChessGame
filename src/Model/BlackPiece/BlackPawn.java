@@ -27,7 +27,7 @@ public class BlackPawn implements Piece {
             if(tileButton.getText().equals(buttonNextPlace(button)) ||
                     tileButton.getText().equals(buttonNextNextPlace(button))){
                 tileButton.setBackground(Color.PINK);
-                gp.getPossibleBlackPiecesListToGo().add(tileButton);
+                gp.getPossiblePiecesListToGo().add(tileButton);
             }
             else{
                 tileButton.setEnabled(false);
@@ -41,7 +41,7 @@ public class BlackPawn implements Piece {
         for(JButton tileButton : gp.getTilesList()){
             if(tileButton.getText().equals(buttonNextPlace(button))){
                 tileButton.setBackground(Color.PINK);
-                gp.getPossibleBlackPiecesListToGo().add(tileButton);
+                gp.getPossiblePiecesListToGo().add(tileButton);
             }
             else{
                 tileButton.setEnabled(false);
@@ -110,14 +110,14 @@ public class BlackPawn implements Piece {
     public void secondPartOfTheTurn(JButton button){
         GamePanel gp = new GamePanel();
         BlackPiecesIconsCreator bpic = new BlackPiecesIconsCreator();
-        if(gp.getPossibleBlackPiecesListToGo().contains(button)){
+        if(gp.getPossiblePiecesListToGo().contains(button)){
             button.setIcon(bpic.iconCreator(bpic.getPawnIconPath()));
             button.setDisabledIcon(bpic.iconCreator(bpic.getPawnIconPath()));
             button.setText(button.getText() + "blackPawn");
         }
         gp.getTilesList().forEach(JButton -> JButton.setBackground(Color.WHITE));
         gp.getTilesList().forEach(JButton -> JButton.setEnabled(true));
-        gp.getPossibleBlackPiecesListToGo().clear();
+        gp.getPossiblePiecesListToGo().clear();
         //repaint blackPiecesList
     }
 }

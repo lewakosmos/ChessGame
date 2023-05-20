@@ -26,22 +26,20 @@ public class OpponentAction implements Action {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     figureRecognition(button);
-                    secondPartTurn(button);
                 }
             });
         }
     }
 
     @Override
-    public void secondPartTurn(JButton button) {
+    public void secondPartTurn() {
         PlayerAction pa = new PlayerAction();
         GamePanel gp = new GamePanel();
-        for(JButton secondPlaceButton : gp.getPossibleBlackPiecesListToGo()){
+        for(JButton secondPlaceButton : gp.getPossiblePiecesListToGo()){
             secondPlaceButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     piecePlaceSecondPart(secondPlaceButton);
-                    button.setIcon(null);
                     pa.firstPartTurn();
                 }
             });

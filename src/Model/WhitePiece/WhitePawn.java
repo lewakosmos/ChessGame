@@ -28,7 +28,7 @@ public class WhitePawn implements Piece {
             if(tileButton.getText().equals(pawnNextPossibleStringPlace(button)) ||
                     tileButton.getText().equals(pawnNextNextPossibleStringPlace(button))){
                 tileButton.setBackground(Color.PINK);
-                gp.getPossibleWhitePiecesListToGo().add(tileButton);
+                gp.getPossiblePiecesListToGo().add(tileButton);
             }
             else{
                 tileButton.setEnabled(false);
@@ -42,7 +42,7 @@ public class WhitePawn implements Piece {
         for(JButton tileButton : gp.getTilesList()){
             if (tileButton.getText().equals(pawnNextPossibleStringPlace(button))) {
                 tileButton.setBackground(Color.PINK);
-                gp.getPossibleWhitePiecesListToGo().add(tileButton);
+                gp.getPossiblePiecesListToGo().add(tileButton);
             }
             else{
                 tileButton.setEnabled(false);
@@ -112,14 +112,14 @@ public class WhitePawn implements Piece {
         PlayerAction pa = new PlayerAction();
         GamePanel gp = new GamePanel();
         WhitePiecesIconsCreator wpic = new WhitePiecesIconsCreator();
-        if(gp.getPossibleWhitePiecesListToGo().contains(button)){
+        if(gp.getPossiblePiecesListToGo().contains(button)){
             button.setIcon(wpic.iconCreator(wpic.getPawnIconPath()));
             button.setDisabledIcon(wpic.iconCreator(wpic.getPawnIconPath()));
             button.setText(button.getText() + "whitePawn");
         }
         gp.getTilesList().forEach(JButton -> JButton.setBackground(Color.WHITE));
         gp.getTilesList().forEach(JButton -> JButton.setEnabled(true));
-        gp.getPossibleWhitePiecesListToGo().clear();//todo maybe im wrong and we need only 1 list
+        gp.getPossiblePiecesListToGo().clear();
         pa.whitePiecesListCreator(); //todo not working
     }
 }

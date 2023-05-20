@@ -22,15 +22,15 @@ public class PlayerAction implements Action {
     @Override
     public void firstPartTurn(){
         whitePiecesListCreator();
-        for(JButton button : whitePiecesList){
-            button.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    figureRecognition(button);
-                    secondPartTurn(button);
-                }
-            });
-        }
+            for (JButton button : whitePiecesList) {
+                button.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        figureRecognition(button);
+                        System.out.println("figureRecognition");
+                    }
+                });
+            }
     }
 
     public void figureRecognition(JButton button){
@@ -62,16 +62,13 @@ public class PlayerAction implements Action {
         }
     }
     @Override
-    public void secondPartTurn(JButton button){
-        OpponentAction oa = new OpponentAction();
+    public void secondPartTurn(){
         GamePanel gp = new GamePanel();
-        for(JButton secondPlaceButton : gp.getPossibleWhitePiecesListToGo()){
+        for(JButton secondPlaceButton : gp.getPossiblePiecesListToGo()){
             secondPlaceButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     piecePlaceSecondPart(secondPlaceButton);
-                    button.setIcon(null);
-                    oa.firstPartTurn();
                 }
             });
         }

@@ -4,7 +4,7 @@ import javax.swing.*;
 
 public interface Action {
     void firstPartTurn();
-    void secondPartTurn(JButton button);
+    void secondPartTurn();
     void figureRecognition(JButton button);
     void piecePlaceSecondPart(JButton button);
 }
