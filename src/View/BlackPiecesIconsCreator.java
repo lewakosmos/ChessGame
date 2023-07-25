@@ -7,11 +7,17 @@ import java.util.Arrays;
 
 public class BlackPiecesIconsCreator implements IconCreator{
     private final String pawnIconPath = "C:\\Users\\lewak\\IdeaProjects\\ChessGame\\pieces\\blackPawn.png";
+    //static path for blackPawn
     private final String rookIconPath = "C:\\Users\\lewak\\IdeaProjects\\ChessGame\\pieces\\blackRook.png";
+    //static path for blackRook
     private final String knightIconPath = "C:\\Users\\lewak\\IdeaProjects\\ChessGame\\pieces\\blackKnight.png";
+    //static path for blackKnight
     private final String bishopIconPath = "C:\\Users\\lewak\\IdeaProjects\\ChessGame\\pieces\\blackBishop.png";
+    //static path for blackBishop
     private final String queenIconPath = "C:\\Users\\lewak\\IdeaProjects\\ChessGame\\pieces\\blackQueen.png";
+    //static path for blackQueen
     private final String kingIconPath = "C:\\Users\\lewak\\IdeaProjects\\ChessGame\\pieces\\blackKing.png";
+    //static path for blackKing
     @Override
     public void tilesIconsCreator(ArrayList<JButton> tilesList) {
         pawnIconCreator(tilesList);
@@ -21,6 +27,7 @@ public class BlackPiecesIconsCreator implements IconCreator{
         queenIconCreator(tilesList);
         kingIconCreator(tilesList);
     }
+    //polymorphism
     @Override
     public void pawnIconCreator(ArrayList<JButton> tilesList) {
         for(JButton button : tilesList){
@@ -31,6 +38,43 @@ public class BlackPiecesIconsCreator implements IconCreator{
             }
         }
     }
+    //polymorphism
+    @Override
+    public void iconChecker(ArrayList<JButton> tilesList)
+    {
+        for(JButton button : tilesList)
+        {
+            if(button.getText().contains("blackPawn"))
+            {
+                button.setIcon(iconCreator(pawnIconPath));
+            }
+            else if(button.getText().contains("blackRook"))
+            {
+                button.setIcon(iconCreator(rookIconPath));
+            }
+            else if(button.getText().contains("blackKnight"))
+            {
+                button.setIcon(iconCreator(knightIconPath));
+            }
+            else if(button.getText().contains("blackBishop"))
+            {
+                button.setIcon(iconCreator(bishopIconPath));
+            }
+            else if(button.getText().contains("blackQueen"))
+            {
+                button.setIcon(iconCreator(queenIconPath));
+            }
+            else if(button.getText().contains("blackKing"))
+            {
+                button.setIcon(iconCreator(kingIconPath));
+            }
+            else if(!button.getText().contains("white"))
+            {
+                button.setIcon(null);
+            }
+        }
+    }
+    //polymorphism
     @Override
     public void rookIconCreator(ArrayList<JButton> tilesList) {
         for(JButton button : tilesList){
@@ -41,6 +85,7 @@ public class BlackPiecesIconsCreator implements IconCreator{
             }
         }
     }
+    //polymorphism
     @Override
     public void knightIconCreator(ArrayList<JButton> tilesList) {
         for(JButton button : tilesList){
@@ -51,6 +96,7 @@ public class BlackPiecesIconsCreator implements IconCreator{
             }
         }
     }
+    //polymorphism
     @Override
     public void bishopIconCreator(ArrayList<JButton> tilesList) {
         for(JButton button : tilesList){
@@ -61,6 +107,7 @@ public class BlackPiecesIconsCreator implements IconCreator{
             }
         }
     }
+    //polymorphism
     @Override
     public void queenIconCreator(ArrayList<JButton> tilesList) {
         for(JButton button : tilesList){
@@ -71,6 +118,7 @@ public class BlackPiecesIconsCreator implements IconCreator{
             }
         }
     }
+    //polymorphism
     @Override
     public void kingIconCreator(ArrayList<JButton> tilesList) {
         for(JButton button : tilesList){
@@ -89,22 +137,5 @@ public class BlackPiecesIconsCreator implements IconCreator{
         tileImage = new ImageIcon(figure);
         return tileImage;
     }
-    public String getPawnIconPath(){
-        return pawnIconPath;
-    }
-    public String getRookIconPath(){
-        return rookIconPath;
-    }
-    public String getKnightIconPath(){
-        return knightIconPath;
-    }
-    public String getBishopIconPath(){
-        return bishopIconPath;
-    }
-    public String getQueenIconPath(){
-        return queenIconPath;
-    }
-    public String getKingIconPath(){
-        return kingIconPath;
-    }
+    //polymorphism
 }

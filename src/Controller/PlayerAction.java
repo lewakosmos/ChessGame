@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class PlayerAction implements Action {
-    private ArrayList<JButton> whitePiecesList;
+/*    private ArrayList<JButton> whitePiecesList;
     public void whitePiecesListCreator() {
         GamePanel gp = new GamePanel();
         whitePiecesList = new ArrayList<>();
@@ -18,16 +18,17 @@ public class PlayerAction implements Action {
                 whitePiecesList.add(button);
             }
         }
-    }
+    }*/
     @Override
     public void firstPartTurn(){
-        whitePiecesListCreator();
-            for (JButton button : whitePiecesList) {
+        GamePanel gp = new GamePanel();
+//        whitePiecesListCreator();
+            for (JButton button : gp.getTilesList()) {
                 button.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         figureRecognition(button);
-                        System.out.println("figureRecognition");
+                        secondPartTurn();
                     }
                 });
             }

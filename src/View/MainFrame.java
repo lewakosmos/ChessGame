@@ -11,5 +11,7 @@ public class MainFrame extends JFrame {
         setSize(new Dimension(500, 500));
         add(BorderLayout.CENTER, gp.panelCreator());
         setVisible(true);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
+    //constructor for game frame
 }
